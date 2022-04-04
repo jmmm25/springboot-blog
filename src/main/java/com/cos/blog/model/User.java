@@ -15,6 +15,7 @@ import java.sql.Timestamp;
 @AllArgsConstructor
 @Builder
 @Entity
+//@DynamicInsert  // Insert 시 null 필드 제외
 public class User {
 
     // 프로젝트에서 연결된 DB의 Numbering 전략을 따라간다.
@@ -32,9 +33,10 @@ public class User {
     @Column(nullable = false, length = 50)
     private String email;
 
-    // Enum을 쓰는게 좋음 (admin, user, manager)
-    @ColumnDefault("'user'")
-    private String role;
+//    @ColumnDefault("'user'")
+    // DB는 RoleType이 없음
+    @Enumerated(EnumType.STRING)
+    private RoleType role;
 
     // 시간이 자동으로 입력
     @CreationTimestamp
