@@ -16,7 +16,7 @@ spring:
   jpa:
     open-in-view: true
     hibernate:
-      ddl-auto: create
+      ddl-auto: update
       naming:
         # 변수명 그대로 Table의 Field로 만들어준다.
         physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
